@@ -52,6 +52,14 @@ def send_setvol_cmd(host: str, *args, hide_output=True) -> Any:
     return result
 
 
+def add_device_name(
+    cmds: list[str], device_name: Optional[str] = None
+) -> None:
+    """Add `device_name` to `cmds` in place,  if `device_name` is not None or empty."""
+    if device_name:
+        cmds.extend(['device', device_name])
+
+
 def mute(host, device_name: Optional[str] = None) -> None:
     """Mute system audio on host.
 
@@ -90,14 +98,6 @@ def set_volume(
     _ = send_setvol_cmd(host, *cmds)
 
 
-def add_device_name(
-    cmds: list[str], device_name: Optional[str] = None
-) -> None:
-    """Add `device_name` to `cmds` in place,  if `device_name` is not None or empty."""
-    if device_name:
-        cmds.extend(['device', device_name])
-
-
 def get_volume(host, device_name: Optional[str] = None) -> int:
     """Get current system volume on host.
 
@@ -118,6 +118,5 @@ def get_volume(host, device_name: Optional[str] = None) -> int:
 
 if __name__ == '__main__':
     # TEST_HOST: str = utils.STIM_HOSTS['NP2']
-    TEST_HOST: str = 'w10dtsm18307'
     logger = np_logging.getLogger()
     doctest.testmod(verbose=True, optionflags=doctest.IGNORE_EXCEPTION_DETAIL)
