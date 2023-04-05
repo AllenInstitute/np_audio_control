@@ -2,7 +2,7 @@
 
 [project]
 name = "np_audio_control"
-version = "0.0.2post0"
+version = "0.0.2post2"
 description = "Tools for remote control of Windows system audio on Mindscope Neuropixels and Behavior rigs."
 authors = [
     {name = "Ben Hardcastle", email = "ben.hardcastle@alleninstitute.org"},
@@ -17,6 +17,11 @@ readme = "README.md"
 license = {text = "MIT"}
 classifiers = [
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
     "License :: OSI Approved :: MIT License",
     "Operating System :: Microsoft :: Windows",
 ]
