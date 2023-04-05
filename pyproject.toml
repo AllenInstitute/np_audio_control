@@ -2,7 +2,7 @@
 
 [project]
 name = "np_audio_control"
-version = "0.0.1-alpha.1"
+version = "0.0.1"
 description = "Tools for remote control of Windows system audio on Mindscope Neuropixels and Behavior rigs."
 authors = [
     {name = "Ben Hardcastle", email = "ben.hardcastle@alleninstitute.org"},

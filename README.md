@@ -1,8 +1,9 @@
 # np_audio_control
 
-Tools for remote control of Windows system audio on Mindscope Neuropixels and Behavior rigs.
 [![Python
-Versions](https://img.shields.io/pypi/pyversions/np_audio_control.svg)](https://pypi.python.org/pypi/setvol/)
+Versions](https://img.shields.io/pypi/pyversions/np_audio_control.svg)](https://pypi.python.org/pypi/np-audio-control/)
+
+Tools for remote control of Windows system audio on Mindscope Neuropixels and Behavior rigs.
 
 
 ```shell
