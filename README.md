@@ -1,7 +1,10 @@
 # np_audio_control
 
+### *For use on internal Allen Institute network*
+
 [![Python
 Versions](https://img.shields.io/pypi/pyversions/np_audio_control.svg)](https://pypi.python.org/pypi/np-audio-control/)
+
 
 Tools for remote control of Windows system audio on Mindscope Neuropixels and Behavior rigs.
 
@@ -31,7 +34,6 @@ python -m pip install np_audio_control
 >>> device = 'Speakers (Realtek USB2.0 Audio)'
 >>> mute(host, device)
 >>> set_volume(50, host, device)
-
 
 # send any command to SetVol
 >>> from np_audio_control import send_setvol_cmd
