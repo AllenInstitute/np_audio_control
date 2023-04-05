@@ -10,4 +10,4 @@ Tools for remote control of Windows system audio on Mindscope Neuropixels and Be
 python -m pip install np_audio_control
 ```
 
-Uses [SetVol](https://www.rlatour.com/setvol/)
+Uses [SetVol](https://www.rlatour.com/setvol/) v3.4
