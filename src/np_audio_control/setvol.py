@@ -31,12 +31,19 @@ def test() -> None:
     raise AssertionError('Not implemented.')
 
 
+def parse_host(host: str) -> str:
+    """Use Sam's stim host dict."""
+    if host in utils.STIM_HOSTS:
+        return utils.STIM_HOSTS[host]
+    return host
+
 def send_setvol_cmd(host: str, *args, hide_output=True) -> Any:
     """Run setvol command on host with `args`.
 
     >>> send_setvol_cmd(TEST_HOST, '?').exited # help
     0
     """
+    host = parse_host(host)
     command = f'"{LOCAL_SETVOL}" {" ".join(args)}'
     with connect(host) as ssh:
         logger.debug(
@@ -53,35 +60,35 @@ def send_setvol_cmd(host: str, *args, hide_output=True) -> Any:
 
 
 def add_device_name(
-    cmds: list[str], device_name: Optional[str] = None
+    cmds: list[str], device: Optional[str] = None
 ) -> None:
-    """Add `device_name` to `cmds` in place,  if `device_name` is not None or empty."""
-    if device_name:
-        cmds.extend(['device', device_name])
+    """Add `device` to `cmds` in place,  if `device` is not None or empty."""
+    if device:
+        cmds.extend(['device', device])
 
 
-def mute(host, device_name: Optional[str] = None) -> None:
+def mute(host, device: Optional[str] = None) -> None:
     """Mute system audio on host.
 
     >>> mute(TEST_HOST)
     """
     cmds = ['mute']
-    add_device_name(cmds, device_name)
+    add_device_name(cmds, device)
     _ = send_setvol_cmd(host, *cmds)
 
 
-def unmute(host, device_name: Optional[str] = None) -> None:
+def unmute(host, device: Optional[str] = None) -> None:
     """Unmute system audio on host.
 
     >>> unmute(TEST_HOST)
     """
     cmds = ['unmute']
-    add_device_name(cmds, device_name)
+    add_device_name(cmds, device)
     _ = send_setvol_cmd(host, *cmds)
 
 
 def set_volume(
-    volume: int | str, host: str, device_name: Optional[str] = None
+    volume: int | str, host: str, device: Optional[str] = None
 ) -> None:
     """Set system volume on host.
 
@@ -94,11 +101,11 @@ def set_volume(
     if not 0 <= volume <= 100:
         raise ValueError(f'`volume` must be between 0 and 100: {volume=}')
     cmds = [str(volume)]
-    add_device_name(cmds, device_name)
+    add_device_name(cmds, device)
     _ = send_setvol_cmd(host, *cmds)
 
 
-def get_volume(host, device_name: Optional[str] = None) -> int:
+def get_volume(host, device: Optional[str] = None) -> int:
     """Get current system volume on host.
 
     >>> unmute(TEST_HOST)
@@ -107,7 +114,7 @@ def get_volume(host, device_name: Optional[str] = None) -> int:
     0
     """
     cmds = ['report']
-    add_device_name(cmds, device_name)
+    add_device_name(cmds, device)
     result = send_setvol_cmd(host, *cmds)
     if 0 <= result.return_code <= 100:
         return result.return_code
