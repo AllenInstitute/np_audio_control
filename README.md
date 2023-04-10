@@ -13,7 +13,7 @@ Uses SetVol v3.4 (https://www.rlatour.com/setvol/)
 
 ## Install
 ```shell
-python -m pip install np_audio_control
+python -m pip install --extra-index-url https://pypi.org/simple np_audio_control
 ```
 
 
